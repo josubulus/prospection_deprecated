@@ -1,0 +1,18 @@
+.classement{
+  display: flex;
+}
+.boxName{
+  border : 1px black solid;
+  height: 400px;
+  width: 30%;
+  overflow: auto;
+  padding: 5px;
+  margin : 5px;
+}
+
+.firmList{
+  border : 1px black solid;
+  height: 30%;
+  background-color: pink;
+  margin : 2px;
+}

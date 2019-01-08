@@ -1,6 +1,6 @@
 <?php
 /**
-@class creer des formulaires.
+*@class creer des formulaires.
 */
 class Form{
 
@@ -13,7 +13,7 @@ class Form{
  }
                     //méthodes interne a l'instance
 /**
-@method sert a entourer les formulaire avec un tag surround accessible depuis l'extèrieur
+*@method sert a entourer les formulaire avec un tag surround accessible depuis l'extèrieur
 */
   public function surround($html){
     return "<{$this->surround}>{$html}</{$this->surround}>";
@@ -23,7 +23,7 @@ class Form{
 
 
   /**
-  @method interne a l'instance pour maintenanir les données dans les champs de saisie
+  *@method interne a l'instance pour maintenanir les données dans les champs de saisie
   sur la vue : $objet = new Form($_POST) avant la balise form
   */
   private function getValue($index){
@@ -38,8 +38,8 @@ class Form{
 
     //functions de l'instance :
 /**
-@method appeler un input password
-@parameters : string nom form puis label form
+*@method appeler un input password
+*@parameters : string nom form puis label form
 */
     public function pass($name,$label){
     return $this->surround('
@@ -48,8 +48,8 @@ class Form{
   ');
   }
 /**
-@method appeler un input text
-@parameters : string nom form puis label form
+*@method appeler un input text
+*@parameters : string nom form puis label form
 */
   public function input($name,$label){
   return $this->surround('
@@ -59,8 +59,8 @@ class Form{
 }
 
 /**
-@method appeler un input mail
-@parameters : string nom form puis label form
+*@method appeler un input mail
+*@parameters : string nom form puis label form
 */
 
 public function mail($name,$label){
@@ -79,7 +79,7 @@ public function textarea($name,$label){
   ');
 }
 /**
-@method appeler un bouton de validation
+*@method appeler un bouton de validation
 */
 
  public function submit($value){
