@@ -1,6 +1,6 @@
 <?php
 /**
- * Classe entreprise doit : écrire dans la bdd et gérer l'affichage
+ @Classe entreprise doit : écrire dans la bdd et gérer l'affichage
  */
 class Entreprise{
 
@@ -10,7 +10,7 @@ class Entreprise{
 
 
 /**
-*@__construct prent des strings : $statut int et $id_user int
+@__construct prent des strings : $statut int et $id_user int
 */
   public function __construct($statut = null, $id_user = null){
      $this->statut = $statut;
@@ -43,7 +43,7 @@ class Entreprise{
 
 
 /**
-* ecrire dans la bdd paramètre 1 array string, 2 array int ne pas passer de paramètre dans le constructeur pour utiliser la méthode
+@method ecrire dans la bdd paramètre 1 array string, 2 array int ne pas passer de paramètre dans le constructeur pour utiliser la méthode
 */
   public function write($new_entreprise){
 

@@ -35,9 +35,6 @@ if (isset($_SESSION) && $_SESSION['page'] != "login_ok") { // si non logé
               }
              ?>
 
-
-
-
 </section>
 <?php
 }

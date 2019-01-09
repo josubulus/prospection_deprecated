@@ -24,7 +24,7 @@ class Form{
 
   /**
   *@method interne a l'instance pour maintenanir les données dans les champs de saisie
-  sur la vue : $objet = new Form($_POST) avant la balise form
+  *sur la vue : $objet = new Form($_POST) avant la balise form
   */
   private function getValue($index){
     if (isset($this->data[$index])) {//attention rajout de [$index] non testé.

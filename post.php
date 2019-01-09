@@ -13,7 +13,7 @@ if ($_SESSION['form'] == 'newFirm') {
 
 
 
-/*       LOGIN          */
+/*       LOGIN          */ //developper le retour d'erreur
 if ($_SESSION['page'] != 'login_ok') {
   require 'class/Membre.php';
   $login = new Membre();
