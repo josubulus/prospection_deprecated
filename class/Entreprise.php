@@ -31,8 +31,8 @@ class Entreprise{
       ?>
       <div class="firmList">
         <a href="#"><!--lien vers fiche entreprise-->
-          <h3><?php echo $firmData['nom']; ?></h3>
-          <p> <em>Activité de l'entreprise : </em> <?php echo $firmData['activite'] ?></p>
+          <h3><?php echo htmlspecialchars($firmData['nom']); ?></h3>
+          <p> <em>Activité de l'entreprise : </em> <?php echo htmlspecialchars($firmData['activite']); ?></p>
         </a>
       </div>
       <?php
