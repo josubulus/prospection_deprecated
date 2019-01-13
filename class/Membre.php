@@ -53,17 +53,21 @@ class Membre
 @method traitement des erreurs login
 */
                 public function error(){
-                  switch ($this->error['post_retour']) {
-                    case 'mdp erroné':
-                      return "Le mot de passe est erroné";
-                      break;
-                    case 'pseudo erroné':
-                        return "Le pseudo n'existe pas ";
-                      break;
+                  if (isset($this->error['post_retour'])) {
+                                switch ($this->error['post_retour']) {
+                                  case 'mdp erroné':
+                                    return "Le mot de passe est erroné";
+                                    break;
+                                  case 'pseudo erroné':
+                                      return "Le pseudo n'existe pas ";
+                                    break;
 
-                    default:
-                      return "";
-                      break;
+                                  default:
+                                    return "";
+                                    break;
+                                }
+                    }else {
+                    return null;
                   }
                 }
 

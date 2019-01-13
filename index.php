@@ -1,6 +1,6 @@
 <?php session_start();
-/*$_SESSION['page'] = 'logout';*/ //crer variable éviter erreur php
-  require 'class/Entreprise.php';
+ $_SESSION['init'] ='init';
+  require 'class/Entreprise.php';//appel class pour tout les include pour l'utilisation dans tout les includes
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr" />
@@ -17,10 +17,13 @@
       <h1>Prospection</h1>
     </header>
         <h3><?php
+        if (isset($_SESSION['error'])) {
           echo $_SESSION['error'];
+        }
+
          ?></h3>
 <?php
-if ($_SESSION['page'] !== 'login_ok') { // si non logé
+if ( !isset($_SESSION['page']) || $_SESSION['page'] !== 'login_ok') { // si non logé
 ?>
           <section>
               <h2>Login</h2>
@@ -34,7 +37,7 @@ else {//sinon :
           <?php include('include/objectifs.php'); ?>
         </section>
                           <?php
-                          if (isset($_GET['idEntreprise'])) {//condition pour afficher la fiche entreprise
+                          if (isset($_GET['idEntreprise']) && isset($_GET['idUser'])) {//condition pour afficher la fiche entreprise
                           ?>
                                   <section id="fiche">
                                     <p><a href="index.php">Retoure</a></p>

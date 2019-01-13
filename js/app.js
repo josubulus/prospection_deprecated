@@ -3,12 +3,12 @@
 */
 
 
-
+// quand la page s'initialise :
 var classement,classementCode;
 
 classement = document.getElementById('classement');
 classementCode = classement.innerHTML;
-/*classement.innerHTML="";*/
+
 
 
 var objectifs,objectifsCode;
@@ -22,14 +22,14 @@ var fiche = document.getElementById('fiche');
             classement.innerHTML = "";
           }
 
-
+//click sur classemnt :
 function classementF(){
   classement.innerHTML = classementCode;
   objectifs.innerHTML = "";
 }
 document.getElementById('lienClassement').addEventListener('click', classementF);
 
-
+//click sur objectif :
 
 function objectifsF(){
   classement.innerHTML = "";

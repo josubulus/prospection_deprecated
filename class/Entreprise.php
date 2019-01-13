@@ -44,10 +44,36 @@ class Entreprise{
 */
   public function companyData($company_id,$id_user){
     include('include/login_bdd.php');
-    $req=$bdd->prepare('SELECT * FROM entreprises WHERE id=:company_id AND id_membre=:id_user');
+    $req=$bdd->prepare('SELECT id,nom,tel,mail,site,adresse,activite,DATE_FORMAT(date_ajout,"%d / %m / %Y") date_affich,statut,statut_mail,DATE_FORMAT(date_mail,"%d / %m / %Y") date_email,notes,interret,id_membre FROM entreprises WHERE id=:company_id AND id_membre=:id_user');
     $req->execute(array('company_id' => $company_id,
                         'id_user' => $id_user));
     $this->companyData = $req->fetch();
+    $this->statut = $this->companyData['statut'];
+
+  }
+
+/**
+@method affficher le nom des status en cours :
+*/
+  public function companyStatus(){
+    switch ($this->statut) {
+      case 1:
+        return "A démarcher";
+        break;
+      case 2:
+        return "Validé";
+        break;
+      case 3:
+        return "Attente réponse";
+        break;
+      case 4:
+        return "Refus";
+        break;
+
+      default:
+        return "rajouter un statut de plus dans la methode";
+        break;
+    }
   }
 
 /**

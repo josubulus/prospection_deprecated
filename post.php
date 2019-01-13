@@ -14,12 +14,15 @@ if (isset($_SESSION['form'])  && $_SESSION['form'] == 'newFirm') {
 
 
 /*       LOGIN          */ //developper le retour d'erreur
-if ($_SESSION['page'] != 'login_ok') {
+if (!isset($_SESSION['page']) || $_SESSION['page'] != 'login_ok') {
   require 'class/Membre.php';
   $login = new Membre();
   $login->login($_POST);
   $_SESSION = $login->getUserData();
-  $_SESSION['error'] = $login->error();
+  if ($login->error() ==! null) {
+    $_SESSION['error'] = $login->error();
+  }
+
 }
 
 
