@@ -1,16 +1,16 @@
 <?php
 /**
- *@class : connection , création est controles des memebres
+ @class : connection , création est controles des memebres
  */
 class Membre
 {
-  public $error;
-  public $userData;
+  private $error = [];
+  private $userData;
 
 
 
 /**
-*@method login paramètres formulaire post
+@method login paramètres formulaire post
 */
     public function login($userLogin){
                   include('include/login_bdd.php');
@@ -28,14 +28,45 @@ class Membre
 
                       }//tchek mdp
                       else {
-                         $this->error['post_retour'] = "mdp erroné";
+                          $this->error['post_retour']='mdp erroné';
                       }
 
               }//tchek pseudo
               else {
-                $this->error['post_retour'] = "pseudo erroné";
+                 $this->error['post_retour']='pseudo erroné' ;
               }
     }
+/**
+@get erreur
+*/
+                public function getError(){
+                	      return $this->error;
+                	    }
+/**
+@get user data
+*/
+                public function getUserData(){
+                  return $this->userData;
+                }
+
+/**
+@method traitement des erreurs login
+*/
+                public function error(){
+                  switch ($this->error['post_retour']) {
+                    case 'mdp erroné':
+                      return "Le mot de passe est erroné";
+                      break;
+                    case 'pseudo erroné':
+                        return "Le pseudo n'existe pas ";
+                      break;
+
+                    default:
+                      return "";
+                      break;
+                  }
+                }
+
 
 
 }//fermeture class

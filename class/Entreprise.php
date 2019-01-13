@@ -6,7 +6,7 @@ class Entreprise{
 
   private $statut;
   private $id_user;
-
+  private $companyData;
 
 
 /**
@@ -20,25 +20,42 @@ class Entreprise{
 
 
   /**
-  *@method : affiche les donnée de l'entreprise selon statut et le membre
+  @method : affiche les donnée de l'entreprise selon statut et le membre
   */
-  public function firmList(){
+  public function companyList(){
     include('include/login_bdd.php');
     $req=$bdd->prepare('SELECT * FROM entreprises WHERE statut=:statut AND id_membre=:id_user');
     $req->execute(array('statut' => $this->statut,
                         'id_user' => $this->id_user));
-    while ($firmData = $req->fetch()) {
+    while ($companyData = $req->fetch()) {
       ?>
       <div class="firmList">
-        <a href="#"><!--lien vers fiche entreprise-->
-          <h3><?php echo htmlspecialchars($firmData['nom']); ?></h3>
-          <p> <em>Activité de l'entreprise : </em> <?php echo htmlspecialchars($firmData['activite']); ?></p>
+        <a href="index.php?idEntreprise=<?php echo $companyData['id'];?>&amp;idUser=<?php echo $companyData['id_membre']; ?>"><!--lien vers fiche entreprise-->
+          <h3><?php echo htmlspecialchars($companyData['nom']); ?></h3>
+          <p> <em>Activité de l'entreprise : </em> <?php echo htmlspecialchars($companyData['activite']); ?></p>
         </a>
       </div>
       <?php
     }
 
   }
+/**
+@method companyData Récupérer les donnée d'une entrepris en fonction d'un id_user et d'un id_entreprise
+*/
+  public function companyData($company_id,$id_user){
+    include('include/login_bdd.php');
+    $req=$bdd->prepare('SELECT * FROM entreprises WHERE id=:company_id AND id_membre=:id_user');
+    $req->execute(array('company_id' => $company_id,
+                        'id_user' => $id_user));
+    $this->companyData = $req->fetch();
+  }
+
+/**
+@getCompanyData récupérer les donnée d'une entreprise
+*/
+ public function getCompanyData(){
+   return $this->companyData;
+ }
 
 
 
@@ -57,6 +74,7 @@ class Entreprise{
                               'adresse'=>$new_entreprise['adresse'],
                                'id_membre'=>$new_entreprise['id_membre']));
   }
+
 
 
 

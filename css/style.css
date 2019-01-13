@@ -1,7 +1,7 @@
 /*    GENERAL          */
 
 /*        INDEX           */
-.classement{
+#classement{
   display: flex;
 }
 .boxName{
