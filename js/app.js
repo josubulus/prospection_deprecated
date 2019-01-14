@@ -1,17 +1,22 @@
 
 //fonction d'affichage du contenu du Dom en fonction du click sur les lien sections
 var section,lienSection;
-function affichageDom(section,lienSection){
+function affichageDom(section,lienSection, conteneurDom){
   function contenuDom(){
-    contenu.innerHTML=section;
+    conteneurDom.innerHTML=section;
   };
   document.getElementById(lienSection).addEventListener('click',contenuDom);
 }
 
     //varibale des différentes sections de la page :
-    var mesObjectifs, ajoutEntreprise, fiche, classement, contenu,navDom;
+    var mesObjectifs, ajoutEntreprise, fiche, classement, contenu, navDom;
       mesObjectifs = document.getElementById('mesObjectifs');
       fiche = document.getElementById('fiche');
+          //section fiche :
+          var ficheUpdate, ficheDonnees, ficheContenu;
+            ficheContenu = document.getElementById('ficheContenu');
+            ficheDonnees = document.getElementById('ficheDonnees');
+            ficheUpdate = document.getElementById('ficheUpdate');
       classement = document.getElementById('classement');
       ajoutEntreprise = document.getElementById('ajoutEntreprise');
       contenu = document.getElementById('contenu');// : Le Dom.
@@ -33,16 +38,31 @@ function affichageDom(section,lienSection){
     //sections par défaut :
       contenu.innerHTML = sectionClassement;
             //fiche de l'entreprise protéger en php du coup section par défaut avec condition.
-            var sectionFiche;
-              if (fiche) {
-                sectionFiche = fiche.innerHTML;
-                fiche.innerHTML = "";
-                contenu.innerHTML = sectionFiche;
-              }
+
+              if (fiche) {//gestion du contenu fiche
+                  function fiche(){
+                    var divFicheUpdate, divFicheDonnees;
+                    //gestion dom interne fiche
+                      //stockage contenu des div :
+                      divFicheUpdate = ficheUpdate.innerHTML;
+                      ficheUpdate.innerHTML = "";
+
+                      divFicheDonnees = ficheDonnees.innerHTML;
+                      ficheDonnees.innerHTML = "";
+                        //affichage en fonction des lien :
+                          //contenu par défaut :
+                              ficheContenu.innerHTML = divFicheDonnees;
+                                affichageDom(divFicheUpdate, 'lienFicheUpdate', ficheContenu);
+                                affichageDom(divFicheDonnees, 'lienFicheDonnees', ficheContenu);
+                  }
+
+                //affichage complet de la fiche:
+                contenu.innerHTML = fiche();
+
+              }//gestion du contenu fiche
     //changement du contenu :
 if (navDom) {//vérifier que les liensDom existent.
-  affichageDom(sectionAjoutEntreprise, 'lienAjoutEntreprise');
-  affichageDom(sectionMesObjectifs, 'lienObjectifs');
-  affichageDom(sectionClassement, 'lienClassement');
+  affichageDom(sectionAjoutEntreprise, 'lienAjoutEntreprise', contenu);
+  affichageDom(sectionMesObjectifs, 'lienObjectifs', contenu);
+  affichageDom(sectionClassement, 'lienClassement', contenu);
 }//vérifier que les liensDom existent.
-console.log(ajoutEntreprise);
