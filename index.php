@@ -1,6 +1,9 @@
 <?php session_start();
  $_SESSION['init'] ='init';
-  require 'class/Entreprise.php';//appel class pour tout les include pour l'utilisation dans tout les includes
+ //appel class pour tout les include pour l'utilisation dans tout les includes
+  require 'class/Entreprise.php';
+  require 'class/Formulaire.php';
+  require 'class/Membre.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr" />
@@ -32,34 +35,42 @@ if ( !isset($_SESSION['page']) || $_SESSION['page'] !== 'login_ok') { // si non 
 <?php
 }//si non logé
 else {//sinon :
+  // Toutes les sections caché en javascript sauf fiche car protégé en php.
 ?>
         <section id="mesObjectifs">
           <?php include('include/objectifs.php'); ?>
+        </section>
+
+        <section id="ajoutEntreprise">
+          <?php include('include/ajoutEntreprise.php'); ?>
         </section>
                           <?php
                           if (isset($_GET['idEntreprise']) && isset($_GET['idUser'])) {//condition pour afficher la fiche entreprise
                           ?>
                                   <section id="fiche">
-                                    <p><a href="index.php">Retoure</a></p>
+                                    <p><a href="index.php">Classement</a></p>
                                     <?php
                                     include('include/fiche.php');
                                      ?>
                                   </section>
 
                           <?php
-                        }else {
+                        }else {// affiche le menu dom que si la fiche n'est pas présente
                           ?>
-                          <p><a id="lienClassement" href="#"> classement : </a></p>
-                          <p><a id="lienObjectifs"  href="#">Objectifs</a></p>
+                          <?php include ('include/domNav.php'); ?>
                           <?php
-                        }
+                        }// affiche le menu dom que si la fiche n'est pas présente
                            ?>
 
-        <section id="classement">
-         <?php include('include/classement.php'); ?>
+        <section id="classement" >
+            <div class="boxClassement">
+              <?php include('include/classement.php'); ?>
+            </div>
         </section>
+<!--      Le contenu du Dom s'affiche dans la div si-dessous   -->
+        <div id="contenu" >
 
-
+        </div>
 <?php
 }
  ?>

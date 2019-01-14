@@ -1,5 +1,4 @@
-<?php require 'class/Formulaire.php';
-      $log = new Form($_POST);?>
+<?php $log = new Form($_POST);?>
 <form action="post.php" method="post">
       <?php
       echo $log->input('login_pseudo','pseudo');
