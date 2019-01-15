@@ -4,6 +4,7 @@ $idUser = intval($_GET['idUser']);
 $fiche = new Entreprise();
 $fiche->companyData($idEntreprise,$idUser);
 $company = $fiche->getCompanyData();
+$_SESSION['id_entreprise'] = $company['id'];
 //liste des champs :
 /*
 id
@@ -28,19 +29,30 @@ id_membre
  </nav>
  <!--  les contenu a traité en js  -->
 <div id="ficheUpdate">
-  <h2>eeduueuuezuemqhshdm</h2>
+  <h2>Mise a jour de donnée de : <?php echo $company['nom']; ?></h2>
+       <?php
+        $update=[];
+        $update = new Form($company);
+        $_SESSION['form'] = 'update';
+        ?>
+  <form action="post.php" method="post">
+    <?php
+        echo $update->input('nom','Nom :');
+        echo $update->input('tel','TEL :');
+        echo $update->input('mail','@mail :');
+        echo $update->input('site','Site :');
+        echo $update->textarea('activite','Activitées :');
+        echo $update->textarea('adresse','Adresse');
+        echo $update->submit('Mettre à jour');
+     ?>
+  </form>
+  <?php echo $_SESSION['form']; ?>
 </div>
 <div id="ficheDonnees">
   <h2>Fiche de l'entreprise : <?php echo htmlspecialchars($company['nom']); ?></h2>
   <p>
-    <?php
-    // le passé en post.php pensé au header get pour récupéré la page au retour
-    // refaire de formulaire en class
-    if (isset($_POST['statut']) && ($_POST['statut'])) {
-      $fiche->companyUpdateStatut(intval($_POST['statut']));            // code...
-    } ?>
         <h3>Status actuel de l'entreprise :</h3>
-            <form  action="#" method="post">
+            <form  action="post.php" method="post">
               <?php
                   $statutModif = [];
                   $statutModif = new Form();

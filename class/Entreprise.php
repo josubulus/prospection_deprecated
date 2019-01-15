@@ -88,8 +88,8 @@ class Entreprise{
   public function companyUpdateStatut($statut){
     include('include/login_bdd.php');
     $req = $bdd->prepare('UPDATE entreprises SET statut=:statut WHERE id=:id_entreprise ');
-    $req->execute(array('statut' => $statut,
-      'id_entreprise' => $this->companyData['id']));
+    $req->execute(array('statut' => $statut['statut'],
+      'id_entreprise' => $statut['id_entreprise']));
   }
 
 /**
@@ -107,8 +107,20 @@ class Entreprise{
                               'adresse'=>$new_entreprise['adresse'],
                                'id_membre'=>$new_entreprise['id_membre']));
   }
-
-
+/**
+@method update entreprises
+*/
+  public function update($update){
+    include('include/login_bdd.php');
+    $req = $bdd->prepare('UPDATE entreprises SET nom=:nom,tel=:tel,mail=:mail,site=:site,adresse=:adresse,activite=:activite WHERE id=:id_entreprise');
+    $req->execute(array('nom'=>$update['nom'],
+                              'tel' =>$update['tel'],
+                              'mail'=>$update['mail'],
+                              'site'=>$update['site'],
+                              'activite'=>$update['activite'],
+                              'adresse'=>$update['adresse'],
+                               'id_entreprise'=>$update['id_entreprise']));
+  }
 
 
 }//fin de la class

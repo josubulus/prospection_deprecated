@@ -9,7 +9,7 @@
       echo $ajout->input('tel','TEL :');
       echo $ajout->input('mail','@mail :');
       echo $ajout->input('site','Site :');
-      echo $ajout->input('activite','Activitées :');
+      echo $ajout->textarea('activite','Activitées :');
       echo $ajout->textarea('adresse','Adresse');
       echo $ajout->submit('creer');
        ?>

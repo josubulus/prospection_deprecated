@@ -77,7 +77,7 @@ return $this->surround('
 public function textarea($name,$label){
   return $this->surround('
       <label for="'.$name.'">' .$label. '</label><br />
-      <textarea name="'.$name.'" rows="3" cols="60">'.$this->getValue($name).'</textarea>
+      <textarea name="'.$name.'" rows="5" cols="60">'.$this->getValue($name).'</textarea>
 
   ');
 }
