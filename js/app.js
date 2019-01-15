@@ -3,7 +3,7 @@
 var section,lienSection;
 function affichageDom(section,lienSection, conteneurDom){
   function contenuDom(){
-    conteneurDom.innerHTML=section;
+    conteneurDom.innerHTML = section;
   };
   document.getElementById(lienSection).addEventListener('click',contenuDom);
 }
@@ -37,10 +37,13 @@ function affichageDom(section,lienSection, conteneurDom){
 
     //sections par défaut :
       contenu.innerHTML = sectionClassement;
-            //fiche de l'entreprise protéger en php du coup section par défaut avec condition.
+            //fiche de l'entreprise protéger en php .
 
               if (fiche) {//gestion du contenu fiche
-                  function fiche(){
+                /*var ficheAffich = fiche.innerHTML;
+                fiche.innerHTML = "";*/
+                contenu.innerHTML = "";
+
                     var divFicheUpdate, divFicheDonnees;
                     //gestion dom interne fiche
                       //stockage contenu des div :
@@ -52,12 +55,15 @@ function affichageDom(section,lienSection, conteneurDom){
                         //affichage en fonction des lien :
                           //contenu par défaut :
                               ficheContenu.innerHTML = divFicheDonnees;
-                                affichageDom(divFicheUpdate, 'lienFicheUpdate', ficheContenu);
-                                affichageDom(divFicheDonnees, 'lienFicheDonnees', ficheContenu);
-                  }
+
+                              affichageDom(divFicheUpdate, 'lienFicheUpdate', ficheContenu);
+                              affichageDom(divFicheDonnees, 'lienFicheDonnees', ficheContenu);
+console.log(ficheDonnees.innerHTML);
+
+
 
                 //affichage complet de la fiche:
-                contenu.innerHTML = fiche();
+                /*contenu.innerHTML = ficheFunct();*/
 
               }//gestion du contenu fiche
     //changement du contenu :

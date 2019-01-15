@@ -78,6 +78,7 @@ public function textarea($name,$label){
 
   ');
 }
+
 /**
 *@method appeler un bouton de validation
 */

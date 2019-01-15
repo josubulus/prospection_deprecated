@@ -55,7 +55,7 @@ class Entreprise{
 /**
 @method affficher le nom des status en cours :
 */
-  public function companyStatus(){
+  public function companyStatut(){
     switch ($this->statut) {
       case 1:
         return "A démarcher";
@@ -82,8 +82,15 @@ class Entreprise{
  public function getCompanyData(){
    return $this->companyData;
  }
-
-
+/**
+@mathod uodate statut :
+*/
+  public function companyUpdateStatut($statut){
+    include('include/login_bdd.php');
+    $req = $bdd->prepare('UPDATE entreprises SET statut=:statut WHERE id=:id_entreprise ');
+    $req->execute(array('statut' => $statut,
+      'id_entreprise' => $this->companyData['id']));
+  }
 
 /**
 @method ecrire dans la bdd paramètre 1 array string, 2 array int ne pas passer de paramètre dans le constructeur pour utiliser la méthode

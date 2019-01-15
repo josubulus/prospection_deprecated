@@ -18,6 +18,7 @@
         <?php include('include/nav.php'); ?>
       </nav>
       <h1>Prospection</h1>
+      <h4>Développer un systeme de couleurs pour les entreprises par importance</h4>
     </header>
         <h3><?php
         if (isset($_SESSION['error'])) {
