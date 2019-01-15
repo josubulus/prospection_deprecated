@@ -24,6 +24,7 @@
       <h4>Développer un systeme de couleurs pour les entreprises par importance</h4>
       <h4>dev : création et suppression de compte profil admin</h4>
       <h4>mise en place du dom def et du css</h4>
+      <h4>attention la fiche s'ouvre si le get est modifier avec une valeur qui n'existe pas faire des tests pour éviter ça </h4>
     </header>
         <h3><?php
         if (isset($_SESSION['error'])) {
@@ -51,7 +52,7 @@ else {//sinon :
           <?php include('include/ajoutEntreprise.php'); ?>
         </section>
                           <?php
-                          if (isset($_GET['idEntreprise']) && isset($_GET['idUser'])) {//condition pour afficher la fiche entreprise
+                          if (isset($_GET['idEntreprise']) && isset($_GET['idUser']) && !empty($_GET['idEntreprise']) && !empty($_GET['idUser'])) {//condition pour afficher la fiche entreprise
                           ?>
                                   <section id="fiche">
                                     <p><a href="index.php">Classement</a></p>
