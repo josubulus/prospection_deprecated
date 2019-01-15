@@ -34,20 +34,22 @@ id_membre
   <h2>Fiche de l'entreprise : <?php echo htmlspecialchars($company['nom']); ?></h2>
   <p>
     <?php
-    // le passé en post.php pensé au header get pour récupéré la page au retour 
+    // le passé en post.php pensé au header get pour récupéré la page au retour
+    // refaire de formulaire en class
     if (isset($_POST['statut']) && ($_POST['statut'])) {
       $fiche->companyUpdateStatut(intval($_POST['statut']));            // code...
     } ?>
-        <h3>Status actuel de l'entreprise :<?php echo $fiche->companyStatut(); ?> </h3>
-        <form action="" method="post">
-          <select name="statut">
-            <option value = 1>A démarcher</option>
-            <option value = 3>Attente réponse</option>
-            <option value = 4>Refus</option>
-            <option value = 2>Validé !</option>
-            <input type="submit" name="envoyer" value="envoyer" />
-          </select>
-        </form>
+        <h3>Status actuel de l'entreprise :</h3>
+            <form  action="#" method="post">
+              <?php
+                  $statutModif = [];
+                  $statutModif = new Form();
+                  $statutModif->select('statut', $contenu = [1 => 'A Demarcher', 2 => 'OK ! ', 3 => 'attente réponse', 4 =>'Refusé'], $company['statut']);
+                  echo $statutModif->submit('Enregistrer');
+              /*echo $fiche->companyStatut();*/
+              ?>
+            </form>
+
 
   </p>
   <ul>
