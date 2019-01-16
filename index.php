@@ -18,13 +18,13 @@
         <?php include('include/nav.php'); ?>
       </nav>
       <h1>Prospection</h1>
+
       <h4>Dev suppression entreprise</h4>
       <h4>rajout note dans update entreprise</h4>
       <h4>édition des objectifs</h4>
       <h4>Développer un systeme de couleurs pour les entreprises par importance</h4>
       <h4>dev : création et suppression de compte profil admin</h4>
       <h4>mise en place du dom def et du css</h4>
-      <h4>attention la fiche s'ouvre si le get est modifier avec une valeur qui n'existe pas faire des tests pour éviter ça </h4>
     </header>
         <h3><?php
         if (isset($_SESSION['error'])) {
