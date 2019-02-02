@@ -18,7 +18,7 @@
         <?php include('include/nav.php'); ?>
       </nav>
       <h1>Prospection</h1>
-
+      <h4>Transformer en tableau de bord possibilité d'y gérer ça stratégie professionnelle</h4>
       <h4>Dev suppression entreprise</h4>
       <h4>rajout note dans update entreprise</h4>
       <h4>édition des objectifs</h4>
