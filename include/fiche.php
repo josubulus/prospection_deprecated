@@ -76,7 +76,8 @@ if (isset($company['id'])) {//si l'entreprise existe
 <div id="ficheContenu">
 </div>
 <?php
-}else {
+}//si l'entreprise existe
+else {
   header('location:index.php');
 }
  ?>
